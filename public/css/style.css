@@ -976,14 +976,16 @@ header .container{
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 16, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area {
-    padding: 25px 0px;
+    padding: 10px 30px;
+    background: #000;
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 16, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area {
-    padding: 0px 0px;
+    padding: 10px 45px;
+    background: #000;
   }
 }
 
@@ -1022,8 +1024,8 @@ header .container{
   .header-area .main-header-area .logo {
     text-align: left;
     width: 55px;
-    
-    
+
+
   }
 }
 
@@ -1032,7 +1034,7 @@ header .container{
   .header-area .main-header-area .logo {
     text-align: left;
     width: 55px;
-    
+
   }
 }
 
@@ -1088,7 +1090,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 101, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area .Appointment .book_btn {
     margin-left: 0;
@@ -1160,7 +1162,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 147, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area .main-menu ul li a {
     font-size: 15px;
@@ -1311,7 +1313,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 253, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
   .header-area .main-header-area.sticky {
     padding: 10px 0px;
@@ -1649,7 +1651,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 125, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_slider.scss */
   .shap_img_1 {
     width: 40%;
@@ -1676,7 +1678,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 139, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_slider.scss */
   .shap_big_2 {
     width: 40%;
@@ -1886,7 +1888,7 @@ header .container{
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 45, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_about.scss */
   .about_me .about_img .color_pattern {
     right: 0;
@@ -2553,7 +2555,7 @@ header .container{
   color: #919191;
   line-height: 26px;
   margin-bottom: 40px;
-  
+
 }
 
 /* line 186, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_footer.scss */
@@ -2628,12 +2630,12 @@ header .container{
 
 /* line 1, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
-background-image:
-url(../img/pexels-ella-olsson-1640774.jpg);
+  background-image:
+          url(../img/pexels-ella-olsson-1640774.jpg);
   margin-top:60px;
 
-  
-  
+
+
 }
 
 /* line 4, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
@@ -4156,7 +4158,7 @@ url(../img/pexels-ella-olsson-1640774.jpg);
 }
 
 /* line 36, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_recepie.scss */
- 
+
 
 
 
@@ -4199,7 +4201,7 @@ url(../img/pexels-ella-olsson-1640774.jpg);
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1500px) {
+@media (min-width: 1200px)  {
   /* line 53, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_recepie.scss */
   .recepie_area .single_recepie .recepie_thumb {
     width: 200px;
@@ -5118,7 +5120,7 @@ url(../img/pexels-ella-olsson-1640774.jpg);
 .text-heading {
   margin-bottom: 30px;
   font-size: 24px;
- 
+
 }
 
 /* line 85, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_elements.scss */
@@ -7941,7 +7943,7 @@ h6 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-animation: 1s;
-   animation: 1s;
+  animation: 1s;
 }
 
 .blog_part .single-home-blog .card ul li {
@@ -8050,24 +8052,23 @@ h6 {
   margin-top:0px;
 }
 .user_symbol{
-    font-size: 12px;
-    background: #ffc000;
-    color: black;
-    border: 1px solid #ffc000;
-    text-transform: capitalize;
-    padding: auto;
-    font-weight: 500;
-    width:40px;
-    height:40px;
-    text-align:center;
-    font-family: "Roboto", sans-serif;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 50%;
-    margin-bottom:3px;
-    margin-top:6px;
-    margin-left:30px;
+  font-size: 12px;
+  background: #ffc000;
+  color: black;
+  border: 1px solid #ffc000;
+  text-transform: capitalize;
+  padding: auto;
+  font-weight: 500;
+  width:40px;
+  height:40px;
+  text-align:center;
+  font-family: "Roboto", sans-serif;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 50%;
+  margin-bottom:3px;
+  margin-top:6px;
+  margin-left:30px;
 
 }
-   
-  
+
