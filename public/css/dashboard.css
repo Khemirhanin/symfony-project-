@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+body {
+    
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    
+    width: 100%;
+    font-weight: Pacifico, sans-serif;
+    }
+.contain{
+   
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    
+    
+    }
+
+.statistics{
+    background-image: url("../img/dashback.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+    height: 100vh;
+    margin-top: 0;
+    width: 100%;
+    font-weight: Pacifico, sans-serif;
+}
+
+.defaultStyle{
+    
+    padding: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    font-weight: Pacifico, sans-serif;
+    margin: 0 30px;
+}
+h2{
+    text-decoration: underline;
+    color: rgb(0, 0, 0);
+    font-weight: Pacifico, sans-serif;
+    text-align: center;
+}
+h4{
+    font-weight: Pacifico, sans-serif;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    color: rgb(228, 190, 0);
+    text-decoration: underline;
+}
+h5{
+    text-align: center;
+}
+footer{
+    width: 100%;
+    
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    letter-spacing: 2px;
+    font-size:13px ;
+    font-weight: Pacifico, sans-serif;
+
+}
+th{
+    padding: 10px 0;
+    font-weight: bold;
+    font-weight: Pacifico, sans-serif;
+    
+
+}
+td{
+    border-top:0.5px solid rgb(179, 179, 179) ;
+    text-align: center;
+    color: rgb(55, 77, 5);
+    font-weight: Pacifico, sans-serif;
+
+}
+tr{
+    border-bottom: 0.5px solid rgb(179, 179, 179) ;
+    font-weight: Pacifico, sans-serif;
+    text-align: center;
+
+
+}
+
+.recipeImg{
+    width: 50px;
+    height: 50px;
+}

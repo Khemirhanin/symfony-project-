@@ -1,0 +1,5 @@
+the recipes page will be bring each recipes data from the database in order to create a dynamic page 
+before displaying the recipe in the recipes zone we will first check if the recipe has been confirmed by the admin
+if the user tries to leave a review when he is not logged in he willl redirected to the loggin oage and an alert will show up 
+when  clicking  on the let's cook button the user will be redirected to the associated  recipe_details file 
+in the recipe details page under each recipe there will be a review  section and again the option of downloading and leaving a review 

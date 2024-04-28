@@ -1,0 +1,42 @@
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+.star {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+}
+.star.active,
+.star.active ~ .star {
+  color: #fdd835; 
+}
+#reviewImg{
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+ display: block;
+}
+#recipeName{
+text-align: center;
+}
+.bradcam_bg_review {
+background-image: url(../img/banner/reviewBanner.jpg);
+}
+
+ul {
+list-style: none;
+}
+li {
+display: inline-block;
+margin-right: 15px;
+position: relative;
+}
+
+.rating input[type='radio'] {
+visibility: hidden;
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+:root {
+    --font: 'Roboto', sans-serif;
+    --white: #fff;
+    --black: #212129;
+    --gray: #9B9B9B;
+    --button: #EF3E36;
+  }
+* {
+   margin: 0;
+   padding: 0;
+   font-family: --font;
+   list-style-type: none;
+   text-decoration: none;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -o-box-sizing: border-box;
+   box-sizing: border-box;
+}
+img {
+   max-width: 100%;
+}
+.card {
+   position: relative;
+   background: --white;
+   max-width: 300px;
+   margin: 20px auto;
+    box-shadow: 2px 3px 20px -1px rgba(0,0,0,0.65);
+   height:400px;
+   text-align:center;
+   display:flex;
+   .header {
+      background-size: cover;
+      min-height: 160px;
+   }
+   .header img{
+    height:200px;
+    width:300px;
+   }
+   .text {
+      .food {
+         color: --black;
+         font-weight: normal;
+         text-transform: uppercase;
+         letter-spacing: 0.1em;
+         margin: 5px 10px;
+      }
+      .fa-clock-o {
+         color: --gray;
+         margin: 0 30px;
+      }
+      .fa-users {
+         color: --gray;
+      }
+   }
+   }
+   .info {
+      margin: 5px 30px;
+   }
+   .btn {
+    display: inline-block;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #ffc000;
+    text-transform: capitalize;
+    padding: 8px 34px;
+    font-weight: 500;
+    width:120px;
+    text-align:center;
+    font-family: "Roboto", sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+.accept:hover{
+    background: green;
+    color: #fff;
+}
+.delete:hover{
+    background: red;
+    color: #fff;
+}
+a.btn {
+    width:190px;
+    margin-left:50px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+a.btn:hover{
+    background: #ffc000;
+    color: #fff;
+}
+.btn-request {
+      background: #fff;
+      color: #131313;
+      display: inline-block;
+      padding: 18px 44px;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      border: 0;
+      border: 1px solid #ffc000;
+      letter-spacing: 3px;
+      text-align: center;
+      color: #ffc000 !important;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 15px;
+}

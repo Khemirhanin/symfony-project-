@@ -1,0 +1,214 @@
+{#<?php#}
+{#require_once('components/autoload.php');#}
+{#$repository = new userRepository();#}
+{#//check if the user is logged in or not#}
+{#if(isset($_COOKIE['user_id'])){#}
+{#    $query = $repository->findById($_COOKIE['user_id']);#}
+{#$user = $query;#}
+{#}#}
+{#?>#}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        Tasty Recipes
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href={{  asset('css/bootstrap.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/owl.carousel.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/magnific-popup.css') }}>
+    <link rel="stylesheet" href={{ asset('css/font-awesome.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/themify-icons.css') }}>
+    <link rel="stylesheet" href={{ asset('css/nice-select.css') }}>
+    <link rel="stylesheet" href={{ asset('css/flaticon.css') }}>
+    <link rel="stylesheet" href={{ asset('css/gijgo.css') }}>
+    <link rel="stylesheet" href={{ asset('css/animate.min.css') }}>
+    <link rel="stylesheet" href= {{ asset('css/slick.css') }}>
+    <link rel="stylesheet" href={{ asset('css/slicknav.css') }}>
+    <link rel="stylesheet" href={{ asset('css/style.css') }}>
+    <link rel="stylesheet" href={{ asset('css/search.css') }}>
+     <link rel="stylesheet" href={{ asset('scss/_responsive.scss') }}>
+    {% block style  %}
+    {% endblock %}
+</head>
+
+<body>
+
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area ">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-2">
+                        <div class="logo">
+                            <a href="index.php">
+                                <img src="img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-8"> <!-- Increased the width of the column -->
+                        <div class="main-menu   d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a href="index.php">home</a></li>
+                                    <li><a href="about.php">about</a></li>
+                                    <li><a href="Recipes.php">Recipes</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
+                                    <!--  if the user is logged in then dipslay these options -->
+                                    <?php if(isset($_COOKIE['user_id'])){ ?>
+                                    <li><a href="logout.php">Logout</a></li>
+                                    <li><a href="Submit_Request.php">Share recipe </a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
+                                            <i class="material-icons white-icon" style="font-size: 18px;">person</i> Profile
+                                        </a>
+                                        <ul class="dropdown-menu" style="background-color: black; color: white;">
+                                            <?php if(isset($query)){ ?>
+                                            <li class="centered-dropdown-item">
+                                                <div class="text-center">
+                                                    <button class="user_symbol"><?= substr($query->UserName, 0, 1) ?></button>
+                                                    <?php } ?>
+                                                    <p class="centered-text" style="margin-bottom: 20px; text-align: center; color: white; margin-left: 15px; margin-right: auto;"><?php echo $query->UserName; ?></p>
+                                                </div>
+                                            </li>
+                                            <li><a href="updateProfile.php?user_id=<?= $_COOKIE['user_id']; ?>" >Update Profile</a></li>
+
+                                            <li><a href="viewMyPosts.php?user_id=<?= $_COOKIE['user_id']; ?>">View My Posts</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- if the user is not logged in then display these options -->
+                                    <?php }else{ ?>
+                                    <li><a href="login.php">Login</a></li>
+                                    <li><a href="register.php">Register</a></li>
+                                    <?php } ?>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                        <form>
+                            <div class="searchBoxFloating">
+                                <input id="search"  type="text"  placeholder="Search" name="search" autocomplete="off">
+                                <button class="searchButton" id="bouton123">
+                                    <i class="material-icons">
+                                        search
+                                    </i>
+                                </button>
+                                <div>
+                                    <ul class="result-box" id="searchResults">
+                                    </ul> <!-- Container for search results -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</header>
+<!-- header-end -->
+
+{% block content %}
+
+{% endblock %}
+
+
+
+
+
+
+
+<!-- footer  -->
+<footer class="footer">
+    <div class="copy-right_text">
+        <div class="container">
+
+            <div class="row align-items-center">
+                <div class="col-xl-8 col-md-8">
+                    <p class="copy_right">
+
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> <span style="color:rgb(255,199,29);">by INSAT Students</span>
+
+                    </p>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="socail_links">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-twitter-alt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-behance"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/ footer  -->
+<!-- JS here -->
+
+{#<script src="js/vendor/modernizr-3.5.0.min.js"></script>#}
+{#<script src="js/vendor/jquery-1.12.4.min.js"></script>#}
+{#<script src="js/popper.min.js"></script>#}
+{#<script src="js/bootstrap.min.js"></script>#}
+{#<script src="js/owl.carousel.min.js"></script>#}
+{#<script src="js/isotope.pkgd.min.js"></script>#}
+{#<script src="js/ajax-form.js"></script>#}
+{#<script src="js/waypoints.min.js"></script>#}
+{#<script src="js/jquery.counterup.min.js"></script>#}
+{#<script src="js/imagesloaded.pkgd.min.js"></script>#}
+{#<script src="js/scrollIt.js"></script>#}
+{#<script src="js/jquery.scrollUp.min.js"></script>#}
+{#<script src="js/wow.min.js"></script>#}
+{#<script src="js/nice-select.min.js"></script>#}
+{#<script src="js/jquery.slicknav.min.js"></script>#}
+{#<script src="js/jquery.magnific-popup.min.js"></script>#}
+{#<script src="js/plugins.js"></script>#}
+{#<script src="js/gijgo.min.js"></script>#}
+
+{#<!--contact js-->#}
+{#<script src="js/contact.js"></script>#}
+{#<script src="js/jquery.ajaxchimp.min.js"></script>#}
+{#<script src="js/jquery.form.js"></script>#}
+{#<script src="js/jquery.validate.min.js"></script>#}
+{#<script src="js/mail-script.js"></script>#}
+{#<!--<script src="js/add_result.js"></script>-->#}
+{#<script src="js/main.js"></script>#}
+{#<script src="js/search.js"></script>#}
+{% block script %}
+{% endblock %}
+</body>
+
+</html>

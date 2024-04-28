@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Playfair Display,sans-serif;
+}
+body{
+    margin-top:80px;
+    background-image: url("../img/copy-space-italian-food-ingredients.jpg");
+    width: 100%;
+    height:140vh;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    max-height: 140vh;
+    
+}
+.footer{
+    position:relative;
+    bottom: -80px;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+.py-5 {
+    padding-top: 0rem !important;
+}
+
+.btn ,.Update_btn{
+    display: inline-block;
+    font-size: 12px;
+    color: #000000;
+    background-color: white;
+    border: 1px solid #ffc000;
+    text-transform: capitalize;
+    padding: 8px 20px;
+    font-weight: 500;
+    width:120px;
+    text-align:center;
+    font-family: "Roboto", sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    margin-left:180px;
+}
+
+.btn:hover ,.Update_btn:hover{
+    background: #ffc000;
+    color: #fff;
+    border: white;
+}
+.h2{
+    text-align:center ;
+}
+.container{
+    width: 100%;
+
+}
+#form{
+    margin-left:600px;
+}

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* VARIABLES */
+:root {
+    
+    --font: 'Roboto', sans-serif;
+    --white: #fff;
+    --black: #212129;
+    --gray: #9B9B9B;
+    --heart: #17BEBB;
+    --star: #FFE500;
+    --button: #EF3E36;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+    list-style-type: none;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+.card {
+    position: relative;
+    background: var(--white);
+    max-width: 300px;
+    margin: 20px auto;
+    box-shadow: 2px 3px 20px -1px rgba(0, 0, 0, 0.65);
+    height: 400px;
+    text-align: center;
+    display: flex;
+}
+
+.card .header {
+    background-size: cover;
+    min-height: 160px;
+}
+
+.card .header .icon a .fa-heart-o {
+    position: absolute;
+    left: 85%;
+    bottom: 39.7%;
+    background: var(--heart);
+    color: var(--white);
+    font-size: 1.3em;
+    display: flex;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 30px 1px var(--heart);
+}
+
+.card .header .icon a .fa-heart-o:active,
+.card .header .icon a .fa-heart-o:hover {
+    background: #ffc000;
+    color: #fff;
+}
+
+.card .header img {
+    height: 200px;
+    width: 300px;
+}
+
+.card .text .food {
+    color: var(--black);
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 5px 10px;
+}
+
+.card .text .fa-clock-o {
+    color: var(--gray);
+    margin: 0 30px;
+}
+
+.card .text .fa-users {
+    color: var(--gray);
+}
+
+.card .stars {
+    margin: 5px 30px;
+}
+
+.card .stars li a i {
+    color: var(--star);
+}
+
+.card .info {
+    margin: 5px 30px;
+}
+
+a.btn {
+    display: inline-block;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #ffc000;
+    text-transform: capitalize;
+    padding: 8px 34px;
+    font-weight: 500;
+    width: 120px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    border-radius: 30px;
+}
+
+a.btn:hover {
+    background: #ffc000;
+    color: #fff;
+}
+
+.btn.download {
+    width: 190px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

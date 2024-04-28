@@ -1,0 +1,2 @@
+in this project we will use the singleton pattern to make sure that the database will only be imported once 
+there will be a repository abstract class  from which inherits other special repositories

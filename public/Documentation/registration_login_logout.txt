@@ -1,0 +1,13 @@
+for each process there will be  a process file to handle the form and another file to handle the the form display.
+a method called filter_var is frequently used to prevent sql data injection 
+a hash method will be used to ensure the password security 
+session will be used to store all the alerts 
+*in the loginProcess 
+    if the user who is trying  to login is the admin he will be taken to the admin dashboard 
+    in case he is a normal user he will be taken to the index page 
+    in both cases a special cookie will be created to save the user_id 
+    this cookie will be used to ensure that the user who is logged in gets all the privileges for a connected user in fact the connected user will be able to add reviews / post recipes /and view profile through a different header then a regular user 
+* in the logout process the cookie will be destroyed and the pages will go back to normal user case 
+*in the registration process : 
+we wil check if the email already exists then the a warning message will be displayed 
+the admin email is "benameureya953@gmail.com" and the password is "admin"

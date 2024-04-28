@@ -1,0 +1,76 @@
+/* importing the font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Xanh+Mono:ital@0;1&display=swap');
+
+
+
+h2{
+    
+    font-family: Playfair Display,sans-serif;
+
+}
+
+p{
+    color:rgb(201, 171, 0) ;
+    margin-bottom: 25px;
+    font-weight: 800;
+    font-size: 20px;
+    font-family:  Playfair Display,sans-serif;
+}
+
+
+
+section{
+    background-color: rgba(250, 250, 250, 0.2);
+    padding: 5px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+.form1 {
+    
+    margin: 0 auto;
+    
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form1 div{
+    padding: 5px;
+    width: 100%;
+    
+
+}
+.form1 div label{
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(90, 77, 0);
+}
+.form1 div input{
+    margin-top: 10px;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    
+    font-size: 20px;
+    
+}
+.form1 div textarea{
+    display: flex;
+    color: black;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    padding: 3px;
+    font-size: 20px;
+    
+}
+
+
+form input[type="submit"]{
+    font-family:  Playfair Display,sans-serif;
+
+}
+
+form input[type="submit"]:active{
+    font-size: 12px;
+}

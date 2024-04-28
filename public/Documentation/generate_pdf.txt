@@ -1,0 +1,3 @@
+in order to run this you will have to download the dompdf from the terminal 
+under every recipe there will be a download as pdf option that will allow the user to download the recipe in  a pdf format  
+so once he clicks on the button he will be redirected to the corresponding generatePdf file using the GET method 

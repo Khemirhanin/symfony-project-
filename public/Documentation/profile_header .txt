@@ -1,0 +1,12 @@
+when the user is logged in more options will be displayed in the header as the user will be allowed to share recipes and logout and view his profile 
+and the register and login option will no longer be displayed 
+*in the user's profile the user will be able to view his shared recipes and update his profile informations:
+    update profile : 
+    the user will be able to change his information 
+        in the updateProfileProcess the user can change any information he wants but he has to write the old password in other words he does not have to fill all of the form but just the field he would like to change and enter the old password for security reasons 
+        
+        the place holders will be the old information of the user  to help him know what he had before changing it 
+
+        in case the user has entered new email that has been used by other users an alert message will be displayed 
+
+in the viewMyPosts page the user will be able to display all the recipes he has shared it will be displayed whether or not the recipe has been confirmed by the admin or not 

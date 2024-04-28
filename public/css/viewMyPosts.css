@@ -1,0 +1,43 @@
+.suggestion{
+    height:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin:80px;
+    flex-direction: column;
+}
+.alert{
+    width:100%;
+    text-align:center;
+}
+
+.share{
+    display: inline-block;
+    font-size: 12px;
+    color: #000000;
+    background-color: white;
+    border: 1px solid #ffc000;
+    text-transform: capitalize;
+    padding: 8px 20px;
+    font-weight: 500;
+    width:120px;
+    text-align:center;
+    font-family: "Roboto", sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    cursor:pointer;
+}
+
+.share:hover{
+    background: #ffc000;
+    color: #fff;
+    border: white;
+}
+.alert{
+    height:40px;
+    font-size:15px;
+    margin-top:8px;
+    text-align: center;
+}
