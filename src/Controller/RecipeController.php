@@ -16,7 +16,10 @@ class RecipeController extends AbstractController
     {
         $recipe = $doctrine->getRepository(Recipes::class)->find($recipeId);
         if (!$recipe) {
-            return $this->redirectToRoute('recipes');        }
+            $this->addFlash('danger', "Recipe not found");
+            return $this->redirectToRoute('recipes');
+
+        }
         return $this->render('recipe/recipeDetails.html.twig', [
             'recipe' => $recipe,
         ]);
@@ -26,6 +29,7 @@ class RecipeController extends AbstractController
     {
         $recipe = $doctrine->getRepository(Recipes::class)->find($recipeId);
         if(!$recipe){
+            $this->addFlash('danger', "Recipe not found");
             return $this->redirectToRoute('recipes');
         }
         $pdf=new PdfService();

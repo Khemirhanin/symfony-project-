@@ -16,7 +16,6 @@ class UserInfoType extends AbstractType
             ->add('UserName')
             ->add('Password')
             ->add('Gender')
-            ->add('Status')
         ;
     }
 
