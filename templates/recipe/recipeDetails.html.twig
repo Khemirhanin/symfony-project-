@@ -78,61 +78,43 @@
             </div>
             <div class="form-group mt-3">
 
-                <a href="review.php?recipe=<?=$recipeId?>" class="button button-contactForm btn_4 boxed-btn">Write a Review</a>
+                <a href="{{ path('review', {'recipe_id': recipe.id }) }}" class="button button-contactForm btn_4 boxed-btn">Write a Review</a>
             </div>
             <div class="form-group mt-3">
                 <a href="generatePdf.php?recipe=<?= $recipe->Id?>" class="button button-contactForm btn_4 boxed-btn" style="margin-left:30px;"><i class="fa fa-download"></i> Download PDF</a>
             </div>
 
         </div>
-{#        <br>#}
-{#        <div class="comment-section">#}
-{#            <h3 class="contact-title" >Reviews</h3>#}
-{#            <?php#}
-{#                        if (($reviewRepository->findReviewByRecipe($recipeId))){#}
-
-{#            foreach ($reviewRepository->findReviewByRecipe($recipeId) as $review){ ?>#}
-{#            <div class="review-box">#}
-{#                <div class="review-head">#}
-{#                    <h3 class="contact-title review-author">#}
-{#                        <?php $user = $userRepository->findById($review->User);#}
-{#                        if(!$user){#}
-{#                        echo"deleted user";#}
-{#                        }#}
-{#                        else{#}
-{#                        echo $user->UserName;#}
-{#                        }};#}
-
-{#                        ?>#}
-{#                    </h3>#}
-{#                    <div class = "rating">#}
-{#                        <?php#}
-{#                        for ($i = 1; $i <= 5; $i++) {#}
-{#                            if ($i <= $review->Rate) {#}
-{#                        echo '<span class="star active">&#9733;</span>';#}
-{#                        } else {#}
-{#                        echo '<span class="star">&#9733;</span>';#}
-{#                        }#}
-{#                        };#}
-{#                        ?>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class= "review-title"><?=$review->Title?></div>#}
-{#                <div class="review-content">#}
-{#                    <?=$review->Description?>#}
-{#                </div>#}
-{#            </div>#}
-
-
-{#        </div>#}
-
-
-
-{#        <?php }else{ ?>#}
-{#        <h2>No review found</h2>#}
-{#        <?php }}else{ ?>#}
-{#        <h2>No recipe found</h2>#}
-{#        <?php } ?>#}
+        <br>
+        <div class="comment-section">
+           <h3 class="contact-title" >Reviews</h3>
+            {% if reviews is not empty %}
+            {% for review in reviews %}
+            <div class="review-box">
+                <div class="review-head">
+                    <h3 class="contact-title review-author">
+                        {{ review.User.UserName }}
+                   </h3>
+               <div class = "rating">
+                   {% for i in 1..5 %}
+                       {% if i <= review.Rate %}
+                           <span class="star active">&#9733;</span>
+                       {% else %}
+                           <span class="star">&#9733;</span>
+                       {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+               <div class= "review-title">{{ review.Title }}</div>
+                <div class="review-content">
+                    {{ review.Description }}
+               </div>
+            </div>
+       </div>
+        {% endfor %}
+        {% else %}
+      <h2>No review found</h2>
+        {% endif %}
     </div>
 
     <!-- recepie_area_start  -->

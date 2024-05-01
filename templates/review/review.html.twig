@@ -1,0 +1,62 @@
+{% extends 'layouts/layout.html.twig' %}
+
+    {% block style  %}
+        <link rel="stylesheet" href={{ asset('css/review.css') }}>
+    {% endblock %}
+{% block content %}
+    <div class="bradcam_area bradcam_bg_review">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>write a review</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="contact-section section_padding">
+        <div class="container">
+            <div class="d-none d-sm-block mb-5 pb-4">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title">Review</h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="form-contact contact_form" >
+                            {{  form_start(form , {'attr': {'novalidate': 'novalidate'}})  }}
+                            <div class="col-12">
+                                <p>rating </p>
+                            </div>
+                            <div class="col-lg-8 form-contact contact_form">
+                            {{ form_widget(form.Rate) }}
+                         </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    {{ form_row(form.Title) }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                   {{ form_row(form.Description) }}
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <img id="reviewImg" src="{{ asset('img/recepie/' ~ recipe.Image ) }}" alt="no image" >
+                        <h2 class="contact-title" id="recipeName">{{ recipe.Name }}</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group mt-3">
+                            {{ form_row(form.submit) }}
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

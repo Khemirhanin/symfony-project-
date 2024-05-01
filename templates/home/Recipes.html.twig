@@ -52,8 +52,7 @@
 
                                     </div>
                                     <div class="col">
-{#                                        <a href="{{ path('review', {'recipeId': recipe.id}) }}" class="btn">Ajouter un avis</a>#}
-                                        <a href="#" class="btn">Ajouter un avis</a>
+                                        <a href="{{ path('review', {'recipe_id': recipe.id}) }}" class="btn">Ajouter un avis</a>
                                     </div>
                                     <a href="{{ path('generatePdf', {'recipeId': recipe.id}) }}" class="btn download"><i class="fa fa-download"></i> Download PDF</a>
                                 </div>

@@ -19,6 +19,7 @@ class RecipeController extends AbstractController
             return $this->redirectToRoute('recipes');        }
         return $this->render('recipe/recipeDetails.html.twig', [
             'recipe' => $recipe,
+            'reviews' => $recipe->getReviews()
         ]);
     }
     #[Route('/generatePdf/{recipeId}', name: 'generatePdf')]
