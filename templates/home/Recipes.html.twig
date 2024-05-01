@@ -1,0 +1,82 @@
+{%  extends 'layouts/layout.html.twig' %}
+{% block style %}
+    <link rel="stylesheet" href="{{ asset('css/recipes.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="bradcam_area bradcam_bg_1" style="background-image: url('{{ asset('img/pasta-1181189_1920.jpg') }}'); opacity: 0.9;" id="searchtitle12">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3 id="searchtitletxt1">Discover Our Recipes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /bradcam_area -->
+
+    <!-- recepie_area_start -->
+    <div class="recipe_area inc_padding">
+        <div class="container">
+            <div class="row" id="Recipiezone12">
+                {% if recipes is not empty %}
+                    {% for recipe in recipes %}
+                        {% if recipe.Confirm == 1 %}
+                            <div class="card">
+                                <div class="header">
+                                    <img src="{{ asset('img/recepie/' ~ recipe.Image) }}" alt="food">
+                                    <div class="icon">
+                                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h3 class="food">{{ recipe.Name }}</h3>
+                                    <i class="fa fa-clock-o"> {{ recipe.Time }}Mins</i>
+                                    <i class="fa fa-users"> Serves {{ recipe.NbServings }}</i>
+                                    <div class="stars">
+                                        <li>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star-o"></i></a>
+                                        </li>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+{#                                        <a href="{{ path('recipeDetails', {'recipeId': recipe.id}) }}" class="btn">Let's Cook!</a>#}
+                                        <a href="#" class="btn">Let's Cook!</a>
+
+                                    </div>
+                                    <div class="col">
+{#                                        <a href="{{ path('review', {'recipeId': recipe.id}) }}" class="btn">Ajouter un avis</a>#}
+                                        <a href="#" class="btn">Ajouter un avis</a>
+                                    </div>
+                                    <a href="{{ path('generatePdf', {'recipeId': recipe.id}) }}" class="btn download"><i class="fa fa-download"></i> Download PDF</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <h2>No recipes found</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="latest_trand_area" style="background-image: url('{{ asset('img/pasta-2978381_1920.jpg') }}'); opacity: 0.9;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="trand_info text-center">
+                        <h3>Share Your Recipe With Us!!</h3>
+                        <a href="Submit_Request.php" class="boxed-btn3">Share Recipes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

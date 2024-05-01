@@ -28,7 +28,7 @@
                     <h3>mouthwatering recipes and culinary inspiration!</h3>
 
                     <div class="video_watch d-flex align-items-center">
-                        <a href="about.php"> <i class="ti-arrow-right"></i> </a>
+                        <a href={{ path('about') }}> <i class="ti-arrow-right"></i> </a>
                         <div class="watch_text" >
                             <h4>About us </h4>
                             <p>You will love our execution</p>
@@ -39,10 +39,10 @@
             <div class="col-lg-6 col-md-6">
                 <div class="videos_thumb">
                     <div class="big_img">
-                        <img src="img/video/big.png" alt="">
+                        <img src={{ asset('img/video/big.png') }}alt="">
                     </div>
                     <div class="small_thumb">
-                        <img src="img/video/small_1.png" alt="">
+                        <img src={{ asset('img/video/small_1.png') }} alt="">
                     </div>
 
                 </div>
@@ -58,7 +58,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="single_recepie text-center">
                     <div class="recepie_thumb">
-                        <img src="img/recepie/recpie_1.png" alt="">
+                        <img src={{ asset('img/recepie/recpie_1.png') }} alt="">
                     </div>
                     <h3>Egg Manchurian</h3>
                     <span>Appetizer</span>
@@ -69,7 +69,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="single_recepie text-center">
                     <div class="recepie_thumb">
-                        <img src="img/recepie/recpie_2.png" alt="">
+                        <img src={{ asset('img/recepie/recpie_2.png') }} alt="">
                     </div>
                     <h3>Pure Vegetable Bowl</h3>
                     <span>Appetizer</span>
@@ -80,7 +80,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="single_recepie text-center">
                     <div class="recepie_thumb">
-                        <img src="img/recepie/recpie_3.png" alt="">
+                        <img src={{ asset('img/recepie/recpie_3.png') }} alt="">
                     </div>
                     <h3>Egg Masala Ramen</h3>
                     <span>Appetizer</span>
@@ -102,7 +102,7 @@
                 <div class="trand_info text-center">
 
                     <h3>Discover latest trending recipes</h3>
-                    <a href="Recipes.php" class="boxed-btn3">View all Recipes</a>
+                    <a href={{ path('recipes')}} class="boxed-btn3">View all Recipes</a>
                 </div>
             </div>
         </div>
