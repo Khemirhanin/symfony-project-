@@ -1,0 +1,50 @@
+{% extends 'layouts/adminlayout.html.twig' %}
+{% block style %}
+    <link rel="stylesheet" href="{{ asset('css/request.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="bradcam_area bradcam_bg_1" style="background-image: url({{ asset("img/banner/bradcam.png") }}); width:100%; height:60vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Recipe Requests</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recipe_area inc_padding">
+        <div class="container">
+            <div class="row">
+                {% if totalRequests is not empty %}
+                    {% for request in totalRequests %}
+                    <div class="card">
+                        <div class="header">
+                            <img src="{{ asset('img/recepie/' ~ request.Image) }}" alt="food">
+                        </div>
+                        <div class="text">
+                            <h3 class="food">{{ request.Name }}</h3>
+                            <i class="fa fa-clock-o"> {{ request.Time }}Mins</i>
+                            <i class="fa fa-users"> Serves {{ request.NbServings }}</i>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="{{ path('acceptRequest', {'id': request.id}) }}" class="btn accept">accept</a>
+
+                            </div>
+                            <div class="col">
+                                <a href="{{ path('deleteRequest', {'id': request.id}) }}" class="btn delete">delete</a>
+                            </div>
+                            <a href="{{ path('requestDetails', {'id': request.id}) }}" class="btn view">view details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <h2>No requests found</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
