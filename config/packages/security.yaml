@@ -8,7 +8,7 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\Users
-                property: email
+                property: Email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -16,11 +16,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\LoginFormAuthenticator
+            custom_authenticator:
+                - App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: home
 
             remember_me:
                 secret: '%kernel.secret%'
