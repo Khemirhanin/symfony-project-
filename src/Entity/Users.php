@@ -199,4 +199,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         // It should return a string that represents the user, like their email address or username.
         return $this->UserName;
     }
+    public function __toString(): string
+    {
+        // Return the username as the string representation of the User
+        return $this->UserName;
+    }
 }
