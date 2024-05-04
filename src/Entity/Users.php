@@ -7,9 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-class Users
+#[UniqueEntity(fields: ["Email"], message: "There is already an account with this email")]
+
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -166,5 +171,32 @@ class Users
         }
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        // For example, you might return an array of roles based on the $Status property
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt(): ?string
+    {
+        // If you are using bcrypt or argon2i, you do not need to return a salt.
+        // If you are not using a modern hashing algorithm, you should return a string
+        // that is used to salt the password hash.
+        return null;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here.
+        // $this->plainPassword = null;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        // This method was introduced in Symfony 5.3 and is used as a replacement for getUsername() in the context of authentication.
+        // It should return a string that represents the user, like their email address or username.
+        return $this->UserName;
     }
 }

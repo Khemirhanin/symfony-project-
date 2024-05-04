@@ -9,10 +9,11 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/annotations": "^2.0",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.12",
         "doctrine/doctrine-migrations-bundle": "^3.3",
-        "doctrine/orm": "^3.1",
+        "doctrine/orm": "*",
         "dompdf/dompdf": "*",
         "phpdocumentor/reflection-docblock": "^5.4",
         "phpstan/phpdoc-parser": "^1.28",
@@ -43,7 +44,8 @@
         "symfony/web-link": "6.1.*",
         "symfony/yaml": "6.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "monolog/monolog": "^1 || ^2 || <3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -69,9 +71,11 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Doctrine\\ORM\\Mapping\\": "vendor/doctrine/orm/lib/Doctrine/ORM/Mapping"
         }
-    },
+    }
+,
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"

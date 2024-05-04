@@ -88,8 +88,8 @@
                                     </li>
                                     <!-- if the user is not logged in then display these options -->
                                     <?php }else{ ?>
-                                    <li><a href="login.php">Login</a></li>
-                                    <li><a href="register.php">Register</a></li>
+                                    <li><a href="{{ path('app_login') }}">Login</a></li>
+                                    <li><a href="{{ path('app_register') }}">Register</a></li>
                                     <?php } ?>
                                 </ul>
                             </nav>
