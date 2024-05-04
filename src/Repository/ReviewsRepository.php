@@ -20,7 +20,16 @@ class ReviewsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Reviews::class);
     }
-
+    public function findOneByUserAndRecipe($userId, $recipeId): ?Reviews
+    {
+     return $this->createQueryBuilder('r')
+         ->andWhere('r.User = :user')
+         ->andWhere('r.Recipe = :recipe')
+        ->setParameter('user', $userId)
+         ->setParameter('recipe', $recipeId)
+         ->getQuery()
+         ->getOneOrNullResult();
+    }
 //    /**
 //     * @return Reviews[] Returns an array of Reviews objects
 //     */

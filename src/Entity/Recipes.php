@@ -174,6 +174,16 @@ class Recipes
         return $this;
     }
 
+    public function updateAverageRating()
+    {
+        $averageRating = 0;
+        $reviews =$this->getReviews();
+        foreach ($reviews as $review) {
+            $averageRating += $review->getRate();
+        }
+        $averageRating /= count($reviews);
+        $this->setAverageRating($averageRating);
+    }
     public function getIdUser(): ?Users
     {
         return $this->IdUser;
