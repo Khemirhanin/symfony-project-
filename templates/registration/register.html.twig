@@ -2,6 +2,7 @@
 
 {% block style %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}"
 {% endblock %}
 
 {% block script %}
@@ -11,7 +12,7 @@
 
 {% block title %}Register {% endblock %}
 {% block content %}
-    <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+    <div class="container" style="margin-left: 600px; padding-bottom:30px ; border-radius:5px;margin-top: 100px; margin-bottom: 100px; background-color: white;width: 600px;">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h1>Register Now</h1>
@@ -19,15 +20,15 @@
                 {{ form_errors(registrationForm) }}
 
                 {{ form_start(registrationForm) }}
-                    {{ form_row(registrationForm.email) }}
-                    {{ form_row(registrationForm.UserName) }}
-                    {{ form_row(registrationForm.Gender) }}
-                    {{ form_row(registrationForm.plainPassword, {
-                        label: 'Password'
-                    }) }}
-                    {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.UserName) }}
+                {{ form_row(registrationForm.Gender) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
 
-                    <button type="submit" class="btn btn-warning">Register</button>
+                <button type="submit" class="btn btn-warning">Register</button>
                 {{ form_end(registrationForm) }}
             </div>
         </div>
