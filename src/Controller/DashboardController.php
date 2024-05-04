@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Reviews;
+use App\Entity\Recipes;
+use App\Form\RecipeType;
 use App\Repository\RecipesRepository;
 use App\Repository\UsersRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/dashboard')]
 class DashboardController extends AbstractController
 {
     private \Doctrine\Persistence\ObjectManager $manager;
@@ -18,6 +21,7 @@ class DashboardController extends AbstractController
     {
         $this->manager = $this->doctrine->getManager();
     }
+
     #[Route('/statistics', name: 'statistics')]
     public function index(RecipesRepository $recipesRepository , UsersRepository $usersRepository): Response
     {
@@ -69,4 +73,48 @@ class DashboardController extends AbstractController
             'request' => $request
         ]);
     }
+    #[Route('/editRecipe/{id?0}', name: 'editRecipe')]
+    public function editRecipe(Request $request,ManagerRegistry $doctrine, Recipes $recipe = null): Response
+    {
+        // If no recipe was found, create a new one
+        if (!$recipe) {
+            $recipe = new Recipes();
+        }
+
+        $form = $this->createForm(RecipeType::class, $recipe);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($recipe);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('recipesCrud');
+        }
+
+        return $this->render('dashboard/editRecipe.html.twig', [
+            'contactForm' => $form->createView(),
+        ]);
+    }
+    #[Route('/deleteRecipe/{id}', name: 'deleteRecipe')]
+    public function deleteRecipe(ManagerRegistry $doctrine,Recipes $recipe = null): Response
+    {
+        if (!$recipe) {
+            $this->addFlash('danger', "Recipe not found");
+            return $this->redirectToRoute('recipesCrud');
+        }
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($recipe);
+        $entityManager->flush();
+        return $this->redirectToRoute('recipesCrud');
+    }
+    #[Route('/recipesCrud', name: 'recipesCrud')]
+    public function recipesCrud(RecipesRepository $recipesRepository): Response
+    {
+        $recipes = $recipesRepository->findAll();
+        return $this->render('dashboard/recipeCrud.html.twig', [
+            'recipes' => $recipes,
+        ]);
+    }
+
 }
