@@ -1,12 +1,4 @@
-{#<?php#}
-{#require_once('components/autoload.php');#}
-{#$repository = new userRepository();#}
-{#//check if the user is logged in or not#}
-{#if(isset($_COOKIE['user_id'])){#}
-{#    $query = $repository->findById($_COOKIE['user_id']);#}
-{#$user = $query;#}
-{#}#}
-{#?>#}
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -37,7 +29,7 @@
     <link rel="stylesheet" href={{ asset('css/slicknav.css') }}>
     <link rel="stylesheet" href={{ asset('css/style.css') }}>
     <link rel="stylesheet" href={{ asset('css/search.css') }}>
-     <link rel="stylesheet" href={{ asset('scss/_responsive.scss') }}>
+    <link rel="stylesheet" href={{ asset('scss/_responsive.scss') }}>
     {% block style  %}
     {% endblock %}
 </head>
@@ -65,32 +57,32 @@
                                     <li><a href={{ path('recipes') }}>Recipes</a></li>
                                     <li><a href="contact.php">Contact</a></li>
                                     <!--  if the user is logged in then dipslay these options -->
-                                    <?php if(isset($_COOKIE['user_id'])){ ?>
-                                    <li><a href="logout.php">Logout</a></li>
+                                    {% if is_granted('ROLE_USER') %}                                            <li class="centered-dropdown-item">
+
+                                    <li><a href={{ path('app_logout') }}>Logout</a></li>
                                     <li><a href="Submit_Request.php">Share recipe </a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
                                             <i class="material-icons white-icon" style="font-size: 18px;">person</i> Profile
                                         </a>
                                         <ul class="dropdown-menu" style="background-color: black; color: white;">
-                                            <?php if(isset($query)){ ?>
-                                            <li class="centered-dropdown-item">
+                                            {% if is_granted('ROLE_USER') %}                                            <li class="centered-dropdown-item">
                                                 <div class="text-center">
-                                                    <button class="user_symbol"><?= substr($query->UserName, 0, 1) ?></button>
-                                                    <?php } ?>
-                                                    <p class="centered-text" style="margin-bottom: 20px; text-align: center; color: white; margin-left: 15px; margin-right: auto;"><?php echo $query->UserName; ?></p>
+                                                    <button class="user_symbol">{{app.user.UserName|slice(0, 1) }}
+                                                    </button>
+
+                                                    <p class="centered-text" style="margin-bottom: 20px; text-align: center; color: white; margin-left: 15px; margin-right: auto;">{{ app.user.userName }}</p>
                                                 </div>
                                             </li>
-                                            <li><a href="updateProfile.php?user_id=<?= $_COOKIE['user_id']; ?>" >Update Profile</a></li>
-
-                                            <li><a href="viewMyPosts.php?user_id=<?= $_COOKIE['user_id']; ?>">View My Posts</a></li>
+                                            <li><a href={{ path('viewMyPosts', {'userId': app.user.id}) }}>View My Posts</a></li>
                                         </ul>
                                     </li>
+                                    {% endif %}
                                     <!-- if the user is not logged in then display these options -->
-                                    <?php }else{ ?>
+                                     {% else %}
                                     <li><a href="{{ path('app_login') }}">Login</a></li>
                                     <li><a href="{{ path('app_register') }}">Register</a></li>
-                                    <?php } ?>
+                                    {% endif %}
                                 </ul>
                             </nav>
                         </div>
