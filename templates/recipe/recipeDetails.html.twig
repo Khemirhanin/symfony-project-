@@ -81,7 +81,7 @@
                 <a href="{{ path('review', {'recipe_id': recipe.id }) }}" class="button button-contactForm btn_4 boxed-btn">Write a Review</a>
             </div>
             <div class="form-group mt-3">
-                <a href="generatePdf.php?recipe=<?= $recipe->Id?>" class="button button-contactForm btn_4 boxed-btn" style="margin-left:30px;"><i class="fa fa-download"></i> Download PDF</a>
+                <a href="{{ path('generatePdf', {'recipeId': recipe.id}) }}" class="button button-contactForm btn_4 boxed-btn" style="margin-left:30px;"><i class="fa fa-download"></i> Download PDF</a>
             </div>
 
         </div>
