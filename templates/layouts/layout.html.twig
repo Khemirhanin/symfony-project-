@@ -55,7 +55,7 @@
                                     <li><a href={{ path('home') }}>home</a></li>
                                     <li><a href={{ path('about') }}>about</a></li>
                                     <li><a href={{ path('recipes') }}>Recipes</a></li>
-                                    <li><a href="contact.php">Contact</a></li>
+                                    <li><a href="{{path('contact')}}">Contact</a></li>
                                     <!--  if the user is logged in then dipslay these options -->
                                     {% if is_granted('ROLE_USER') %}                                            <li class="centered-dropdown-item">
 
