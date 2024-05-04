@@ -1,0 +1,185 @@
+
+{%  extends 'layouts/adminLayout.html.twig' %}
+
+
+{% block content %}
+    <!-- slider_area_start -->
+
+    <h1>Statistics </h1>
+
+    <div class="statistics">
+        <div class="defaultStyle connectedUsers ">
+            <h2>Connected Users</h2>
+            <br>
+            <h4>{{ connectedUsers|length }}</h4>
+        </div>
+        <div class="defaultStyle totalUsers">
+            <h2>Total Users</h2>
+            <br>
+            <h4>{{ totalUsers|length }}</h4>
+
+        </div>
+        <div class="defaultStyle categories">
+            <h2>Categories</h2>
+            <br>
+            <h4>7</h4>
+
+        </div>
+        <div class="defaultStyle totalRecipes">
+            <h2>Recipes</h2>
+            <br>
+            <h4>{{ totalRecipes|length }}</h4>
+
+
+        </div>
+
+        <div class="defaultStyle totalRecipes">
+            <h2>Requests</h2>
+            <br>
+            <h4>{{ totalRequests|length }}</h4>
+
+
+        </div>
+
+
+    </div>
+    <div class="displaying">
+        <div class="connectedUsers defaultTable">
+            <h3>Connected Users</h3>
+            <section>
+                <table class="table table-striped">
+
+
+                    {% if ( connectedUsers|length == 0) %}
+                    <h5>There are no connected users</h5>
+                    {% else %}
+
+                    <tr>
+                        <th>Id</th>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                    </tr>
+
+                    {% for user in connectedUsers %}
+                    <tr>
+                        <td>{{user.getId()}} </td>
+                        <td>{{ user.getUserName()}}</td>
+                        <td>{{ user.getEmail()}}</td>
+                        <td>{{user.getGender() == 1 ? 'female' : 'male' }} </td>
+                    </tr>
+                    {% endfor %}
+
+                    {%endif %}
+                </table>
+            </section>
+        </div>
+        <div class="totalUsers defaultTable">
+            <h3>Total Users</h3>
+            <section>
+                <table class="table table-striped">
+
+
+                    {% if ( totalUsers|length == 0) %}
+                        <h5>There are no users</h5>
+                    {% else %}
+
+                        <tr>
+                            <th>Id</th>
+                            <th>UserName</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                        </tr>
+
+                        {% for user in totalUsers %}
+                            <tr>
+                                <td>{{user.getId()}} </td>
+                                <td>{{ user.getUserName() }}</td>
+                                <td>{{  user.getEmail() }}</td>
+                                <td>{{user.getGender() == 1 ? 'female' : 'male' }} </td>
+                            </tr>
+                        {% endfor %}
+
+                    {%endif %}
+                </table>
+            </section>
+        </div>
+        <div class="recipes defaultTable">
+            <h3>Recipes</h3>
+            <section>
+                <table class="table table-striped">
+
+
+                    {% if ( totalRecipes|length == 0) %}
+                        <h5>There are no recipes</h5>
+                    {% else %}
+
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Time</th>
+                            <th>NbServings</th>
+                            <th>Difficulty</th>
+                            <th>UserName</th>
+
+                        </tr>
+
+                        {% for recipe in totalRecipes %}
+                            <tr>
+                                <td>{{recipe.getId()}} </td>
+                                <td><img class="recipeImg" src="{{asset('img/recepie/'~recipe.getImage())  }}" alt="recipe image" width="100" height="100"></td>
+                                <td>{{ recipe.getName() }}</td>
+                                <td>{{ recipe.getType() }}</td>
+                                <td>{{ recipe.getTime()~"mn" }}</td>
+                                <td>{{ recipe.getNbServings() }}</td>
+                                <td>{{ recipe.getDifficulty() }}</td>
+                                <td>{{ recipe.getIdUser() }}</td>
+                            </tr>
+                        {% endfor %}
+                    {%endif %}
+                </table>
+            </section>
+        </div>
+        <div class="requests defaultTable">
+            <h3>Requests</h3>
+            <section>
+                <table class="table table-striped">
+
+
+                    {% if ( totalRequests|length == 0) %}
+                        <h5>There are no recipes</h5>
+                    {% else %}
+
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Time</th>
+                            <th>NbServings</th>
+                            <th>Difficulty</th>
+                            <th>UserName</th>
+
+                        </tr>
+
+                        {% for recipe in totalRequests %}
+                            <tr>
+                                <td>{{recipe.getId()}} </td>
+                                <td><img class="recipeImg" src="{{asset('img/recepie/'~recipe.getImage())  }}" alt="recipe image" width="100" height="100"></td>
+                                <td>{{ recipe.getName() }}</td>
+                                <td>{{ recipe.getType() }}</td>
+                                <td>{{ recipe.getTime()~"mn" }}</td>
+                                <td>{{ recipe.getNbServings() }}</td>
+                                <td>{{ recipe.getDifficulty() }}</td>
+                                <td>{{ recipe.getIdUser() }}</td>
+                            </tr>
+                        {% endfor %}
+                    {%endif %}
+                </table>
+            </section>
+        </div>
+    </div>
+
+{% endblock %}
