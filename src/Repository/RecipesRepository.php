@@ -20,7 +20,14 @@ class RecipesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Recipes::class);
     }
-
+    public function findRequests(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.Confirm = :val')
+            ->setParameter('val', 0)
+            ->getQuery()
+            ->getResult();
+    }
 
 //    /**
 //     * @return Recipes[] Returns an array of Recipes objects
