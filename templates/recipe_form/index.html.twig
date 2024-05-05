@@ -1,0 +1,34 @@
+{% extends 'layouts/layout.html.twig' %}
+{% block style  %}
+    <link rel="stylesheet" href={{ asset('css/form1.0.css') }}>
+{% endblock %}
+{% block content %}
+    <div class="containerbox12">
+        <div class="container12" id ="main">
+            <h1 class="form_title">Share Recipe</h1>
+            {% for flash_message in app.flashes('danger') %}
+            <h4 style='color:red;'>
+                    {{ flash_message }}
+             </h4>
+            {% endfor %}
+            {% for flash_message in app.flashes('success') %}
+            <h4 style='color:green;'>
+                {{ flash_message }}
+                <br> check your profile for confirmation .</h4>
+            {% endfor %}
+            {{ form(form) }}
+        </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+    <script>
+        var label = document.querySelector('.custom-file-label');
+        label.textContent = "choisir un fichier";
+        document.getElementById('recipes_image').addEventListener('change', function(event) {
+            var fileName = event.target.files[0].name;
+
+            label.textContent = fileName;
+        });
+    </script>
+{% endblock %}
