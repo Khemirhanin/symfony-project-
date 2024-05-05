@@ -1,11 +1,18 @@
 .searchBoxFloating {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 10px;
+    width: 250px;
     z-index: 9999;
 }
-
-#search {
+.searchin{
+    padding: 0px;
+    margin: 0px;
+    width: 80%;
+    display: inline-flex;
+}
+.search {
+    flex: 1; /* Take up remaining space */
     border: none;
     background-color: #333; /* Dark grey background */
     color: #fff; /* White text color */
@@ -17,6 +24,7 @@
 
 .searchbtn1 {
     border: none;
+    display: inline-flex;
     background-color: #555; /* Darker grey button background */
     color: #fff;
     padding: 10px 20px;
