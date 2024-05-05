@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\SearchType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Recipes;
@@ -25,11 +27,25 @@ class HomeController extends AbstractController
     }
 
     #[Route('/recipes', name: 'recipes')]
-    public function recipes(ManagerRegistry $doctrine): Response
+    public function recipes(ManagerRegistry $doctrine,Request $request): Response
     {
         $recipes = $doctrine->getRepository(Recipes::class)->findAll();
 
-        return $this->render('home/recipes.html.twig',[
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->get('search')->getData();
+
+            $repository = $doctrine->getRepository(Recipes::class);
+
+            $recipes = $repository->findByName($search);
+
+            return $this->render('home/recipes.html.twig', [
+                'recipes' => $recipes,
+            ]);
+        }
+        return $this->render('home/recipes.html.twig', [
             'recipes' => $recipes,
         ]);
     }

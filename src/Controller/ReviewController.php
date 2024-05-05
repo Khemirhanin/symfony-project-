@@ -27,8 +27,11 @@ class ReviewController extends AbstractController
     #[Route('/review/{recipe_id}', name: 'review', methods: ['GET', 'POST'])]
     public function add(Request $request, $recipe_id): Response
     {
-        $user = $this->getUser();
-        $user_id = $user->getId();
+        // ToDo: get user_id from session
+        //$session = $request->getSession();
+        //$user_id = $session->get('user')['id'];
+        $user_id = 1;
+
         $review = $this->repository->findOneByUserAndRecipe($user_id ,$recipe_id);
         $recipe = $this->doctrine->getRepository(Recipes::class)->find($recipe_id);
         $user = $this->doctrine->getRepository(Users::class)->find($user_id);
