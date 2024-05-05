@@ -173,9 +173,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRoles(): array
+     public function getRoles(): array
     {
-        // For example, you might return an array of roles based on the $Status property
+        if($this->getEmail()=='benameureya953@gmail.com')
+        {
+            return ['ROLE_ADMIN'];
+        }
         return ['ROLE_USER'];
     }
 
