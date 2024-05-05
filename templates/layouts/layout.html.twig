@@ -1,4 +1,12 @@
-
+{#<?php#}
+{#require_once('components/autoload.php');#}
+{#$repository = new userRepository();#}
+{#//check if the user is logged in or not#}
+{#if(isset($_COOKIE['user_id'])){#}
+{#    $query = $repository->findById($_COOKIE['user_id']);#}
+{#$user = $query;#}
+{#}#}
+{#?>#}
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -29,7 +37,7 @@
     <link rel="stylesheet" href={{ asset('css/slicknav.css') }}>
     <link rel="stylesheet" href={{ asset('css/style.css') }}>
     <link rel="stylesheet" href={{ asset('css/search.css') }}>
-    <link rel="stylesheet" href={{ asset('scss/_responsive.scss') }}>
+     <link rel="stylesheet" href={{ asset('scss/_responsive.scss') }}>
     {% block style  %}
     {% endblock %}
 </head>
@@ -55,41 +63,53 @@
                                     <li><a href={{ path('home') }}>home</a></li>
                                     <li><a href={{ path('about') }}>about</a></li>
                                     <li><a href={{ path('recipes') }}>Recipes</a></li>
-                                    <li><a href="contact.php">Contact</a></li>
+                                    <li><a href="{{ path('contact') }}">Contact</a></li>
                                     <!--  if the user is logged in then dipslay these options -->
-                                    {% if is_granted('ROLE_USER') %}                                            <li class="centered-dropdown-item">
-
-                                    <li><a href={{ path('app_logout') }}>Logout</a></li>
-                                    <li><a href={{ path('/form') }}>Share recipe </a></li>
+                                    <?php if(isset($_COOKIE['user_id'])){ ?>
+                                    <li><a href="logout.php">Logout</a></li>
+                                    <li><a href="Submit_Request.php">Share recipe </a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
                                             <i class="material-icons white-icon" style="font-size: 18px;">person</i> Profile
                                         </a>
                                         <ul class="dropdown-menu" style="background-color: black; color: white;">
-                                            {% if is_granted('ROLE_USER') %}                                            <li class="centered-dropdown-item">
+                                            <?php if(isset($query)){ ?>
+                                            <li class="centered-dropdown-item">
                                                 <div class="text-center">
-                                                    <button class="user_symbol">{{app.user.UserName|slice(0, 1) }}
-                                                    </button>
-
-                                                    <p class="centered-text" style="margin-bottom: 20px; text-align: center; color: white; margin-left: 15px; margin-right: auto;">{{ app.user.userName }}</p>
+                                                    <button class="user_symbol"><?= substr($query->UserName, 0, 1) ?></button>
+                                                    <?php } ?>
+                                                    <p class="centered-text" style="margin-bottom: 20px; text-align: center; color: white; margin-left: 15px; margin-right: auto;"><?php echo $query->UserName; ?></p>
                                                 </div>
                                             </li>
-                                            <li><a href={{ path('viewMyPosts', {'userId': app.user.id}) }}>View My Posts</a></li>
+                                            <li><a href="updateProfile.php?user_id=<?= $_COOKIE['user_id']; ?>" >Update Profile</a></li>
+
+                                            <li><a href="viewMyPosts.php?user_id=<?= $_COOKIE['user_id']; ?>">View My Posts</a></li>
                                         </ul>
                                     </li>
-                                    {% endif %}
                                     <!-- if the user is not logged in then display these options -->
-                                     {% else %}
+                                    <?php }else{ ?>
                                     <li><a href="{{ path('app_login') }}">Login</a></li>
                                     <li><a href="{{ path('app_register') }}">Register</a></li>
-                                    {% endif %}
+                                    <?php } ?>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2 d-none d-lg-block">
-                                {{ render(controller('App\\Controller\\SearchController::searchBar')) }}
-
+                        <form>
+                            <div class="searchBoxFloating">
+                                <input id="search"  type="text"  placeholder="Search" name="search" autocomplete="off">
+                                <button class="searchButton" id="bouton123">
+                                    <i class="material-icons">
+                                        search
+                                    </i>
+                                </button>
+                                <div>
+                                    <ul class="result-box" id="searchResults">
+                                    </ul> <!-- Container for search results -->
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-12">
@@ -186,7 +206,7 @@
 <script src="{{ asset('js/mail-script.js') }}"></script>
 {#<!--<script src="{{ asset('js/add_result.js') }}"></script>-->#}
 <script src="{{ asset('js/main.js') }}"></script>
-{# <script src="{{ asset('js/search.js') }}"></script> #}
+<script src="{{ asset('js/search.js') }}"></script>
 {% block script %}
 {% endblock %}
 </body>
