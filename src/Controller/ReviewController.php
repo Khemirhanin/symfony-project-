@@ -17,24 +17,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReviewController extends AbstractController
 {
     private \Doctrine\Persistence\ObjectManager $manager;
-    private $repository;
 
     public function __construct(private ManagerRegistry $doctrine)
     {
         $this->manager = $this->doctrine->getManager();
-        $this->repository = $this->doctrine->getRepository(Reviews::class);
     }
     #[Route('/review/{recipe_id}', name: 'review', methods: ['GET', 'POST'])]
     public function add(Request $request, $recipe_id): Response
     {
-        // ToDo: get user_id from session
-        //$session = $request->getSession();
-        //$user_id = $session->get('user')['id'];
-        $user_id = 1;
-
-        $review = $this->repository->findOneByUserAndRecipe($user_id ,$recipe_id);
+        $user = $this->getUser();
+        $review = $this->doctrine->getRepository(Reviews::class)->findOneByUserAndRecipe($user ,$recipe_id);
         $recipe = $this->doctrine->getRepository(Recipes::class)->find($recipe_id);
-        $user = $this->doctrine->getRepository(Users::class)->find($user_id);
+
         if (!$review) {
             $review = new Reviews();
             $review->setUser($user);
