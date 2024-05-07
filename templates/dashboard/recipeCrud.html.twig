@@ -1,0 +1,70 @@
+{% extends 'layouts/adminLayout.html.twig' %}
+
+{% block content %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1 bradcam_width">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Recipes Crud</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /bradcam_area  -->
+  <container class="container">
+      <div class="recipes defaultTable">
+          <h3>Recipes</h3>
+          <br>
+          <br>
+          <div class="container add">
+              <a  href="{{ path('editRecipe') }}" class="btn btn-outline-warning ">add Recipe</a>
+
+          </div>
+          <br>
+          <br>
+          <section>
+              <table class="table table-striped">
+
+
+                  {% if ( recipes|length == 0) %}
+                      <h5>There are no recipes</h5>
+                  {% else %}
+
+                      <tr>
+                          <th>Id</th>
+                          <th>Image</th>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Time</th>
+                          <th>NbServings</th>
+                          <th>Difficulty</th>
+                          <th>UserName</th>
+
+                      </tr>
+
+                      {% for recipe in recipes %}
+                          <tr>
+                              <td>{{recipe.getId()}} </td>
+                              <td><img class="recipeImg" src="{{asset('img/recepie/'~recipe.getImage())  }}" alt="recipe image" width="100" height="100"></td>
+                              <td>{{ recipe.getName() }}</td>
+                              <td>{{ recipe.getType() }}</td>
+                              <td>{{ recipe.getTime()~"mn" }}</td>
+                              <td>{{ recipe.getNbServings() }}</td>
+                              <td>{{ recipe.getDifficulty() }}</td>
+                              <td>{{ recipe.getIdUser() }}</td>
+                              <td><a href="{{ path('editRecipe', {'id': recipe.getId()}) }}" class="btn btn-outline-warning">edit</a></td>
+                              <td><a href="{{ path('deleteRecipe', {'id': recipe.getId()}) }}" class="btn btn-outline-dark">delete</a></td>
+                          </tr>
+                      {% endfor %}
+                  {%endif %}
+              </table>
+          </section>
+      </div>
+  </container>
+
+{% endblock %}
+
+
