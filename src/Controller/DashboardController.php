@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Recipes;
+use App\Form\RecipesType;
 use App\Form\RecipeType;
 use App\Repository\RecipesRepository;
 use App\Repository\UsersRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -74,27 +76,39 @@ class DashboardController extends AbstractController
         ]);
     }
     #[Route('/editRecipe/{id?0}', name: 'editRecipe')]
-    public function editRecipe(Request $request,ManagerRegistry $doctrine, Recipes $recipe = null): Response
+    public function editRecipe(Request $request,
+                               ManagerRegistry $doctrine,
+                               EntityManagerInterface $manager,
+                               Recipes $recipe = null): Response
     {
         // If no recipe was found, create a new one
         if (!$recipe) {
             $recipe = new Recipes();
         }
 
-        $form = $this->createForm(RecipeType::class, $recipe);
+        $form = $this->createForm(RecipesType::class, $recipe);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($recipe);
-            $entityManager->flush();
+        $img = $form['image']->getData();
+        if($form->isSubmitted() && $form->isValid()){
+            $filename = uniqid('', true).'.'.$img->guessExtension();
+            if($img->move($this->getParameter('kernel.project_dir').'/public/img/recepie',$filename)){
+                $recipe->setImage($filename);
+                $recipe->setConfirm(1);
+                $recipe->setAverageRating(0);
+                $manager->persist($recipe);
+                $manager->flush();
 
+
+            }
             return $this->redirectToRoute('recipesCrud');
         }
 
         return $this->render('dashboard/editRecipe.html.twig', [
             'contactForm' => $form->createView(),
+            'recipe' => $recipe,
         ]);
+
     }
     #[Route('/deleteRecipe/{id}', name: 'deleteRecipe')]
     public function deleteRecipe(ManagerRegistry $doctrine,Recipes $recipe = null): Response
